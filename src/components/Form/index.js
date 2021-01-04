@@ -9,16 +9,15 @@ export const Form = () => {
   const { register, handleSubmit, watch, errors } = useForm({
     criteriaMode: "all"
   });
-  const [data, setData] = useState([]);
 
-  useEffect(() => {
-    async function getContent() {
-      const response = await api.get('/users')
-      console.log(response.data)
-      setData(response.data)
-    }
-    getContent()
-  },[])
+  const [data, setData] = useState([]);
+  console.log(data)
+
+  async function getContent() {
+    const response = await api.get('/users')
+    console.log(response.data)
+    setData(response.data)
+  }
 
   function onSubmit(data) {
     console.log(data)
@@ -164,6 +163,18 @@ export const Form = () => {
 
       <input type="submit"/>
     </form>
+
+        {data.map((user, i) => (
+          <ul>
+            <li>{user.name}</li>
+            <li>{user.lastName}</li>
+            <li>{user.email}</li>
+            <li>{user.occupation}</li>
+            <li>{user.phone}</li>
+          </ul>
+        ))}
+        
+        <button onClick={getContent}>List</button>
     </Container>
     </>
   );
