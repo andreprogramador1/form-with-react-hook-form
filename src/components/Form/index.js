@@ -14,12 +14,19 @@ export const Form = () => {
   
 
   function onSubmit(data) {
-    console.log(data)
-    const url = `http://localhost:3333/users/`
-    api.post(url, data)
-    .then((response) => {
+
+    try {
+      console.log(data)
+      const url = `/users`
+      api.post(url, data)
+      .then((response) => {
       console.log(response)
     })
+
+    } catch (error) {
+      console.log(error)
+    }
+    
    
   }
 

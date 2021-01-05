@@ -7,5 +7,12 @@ export const Container = styled.div`
     left: 0;
     top: 0;
     background-color: blue;
-    z-index: -1;
+    /* z-index: -1; */
+
+    a {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+    }
 `;
