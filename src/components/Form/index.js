@@ -4,23 +4,17 @@ import { useForm, Controller  } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message';
 import api from '../../services/api' 
 
-export const Form = () => {
+export const Form = ({ data, setData }) => {
 
   const { register, handleSubmit, watch, errors } = useForm({
     criteriaMode: "all"
   });
 
-  const [data, setData] = useState([]);
-  console.log(data)
-
-  async function getContent() {
-    const response = await api.get('/users')
-    console.log(response.data)
-    setData(response.data)
-  }
+  
+  // console.log(data)
 
   function onSubmit(data) {
-    console.log(data)
+    // console.log(data)
     const url = `http://localhost:3333/users/`
     api.post(url, data)
     .then((response) => {
@@ -164,17 +158,7 @@ export const Form = () => {
       <input type="submit"/>
     </form>
 
-        {data.map((user, i) => (
-          <ul>
-            <li>{user.name}</li>
-            <li>{user.lastName}</li>
-            <li>{user.email}</li>
-            <li>{user.occupation}</li>
-            <li>{user.phone}</li>
-          </ul>
-        ))}
         
-        <button onClick={getContent}>List</button>
     </Container>
     </>
   );
