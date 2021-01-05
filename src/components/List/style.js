@@ -8,3 +8,10 @@ export const LiContainer = styled.div`
     background-color: #ccc;
   }
 `;
+
+export const Button = styled.button`
+
+    margin: auto;
+    display: flex;
+
+`; 

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import api from '../../services/api'
-import { LiContainer } from './style'
+import { LiContainer, Button } from './style'
 import { SideBar } from '../SideBar'
+
 
 export const List = () => {
 
@@ -27,7 +28,7 @@ export const List = () => {
       </LiContainer>
     ))}
 
-      <button onClick={getContent}>List</button>
+      <Button onClick={getContent}>List</Button>
       <SideBar/>
     </>
   );
