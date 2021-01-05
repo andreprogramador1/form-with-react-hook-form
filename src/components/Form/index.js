@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react'
 import { Container } from './style'
 import { useForm, Controller  } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message';
-import api from '../../services/api' 
+import api from '../../services/api'
+import { SideBar } from '../SideBar'
 
-export const Form = ({ data, setData }) => {
+export const Form = () => {
 
   const { register, handleSubmit, watch, errors } = useForm({
     criteriaMode: "all"
   });
 
   
-  // console.log(data)
 
   function onSubmit(data) {
-    // console.log(data)
+    console.log(data)
     const url = `http://localhost:3333/users/`
     api.post(url, data)
     .then((response) => {
@@ -160,6 +160,7 @@ export const Form = ({ data, setData }) => {
 
         
     </Container>
+    <SideBar/>
     </>
   );
 }

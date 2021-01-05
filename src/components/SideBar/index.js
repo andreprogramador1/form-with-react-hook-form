@@ -1,11 +1,11 @@
 import React from 'react'
-import { List } from '../List'
 
+import { Container } from './style'
 
 export const SideBar = () => {
   return(
      <Container>
-       <List />
+        
      </Container> 
   );
 }
