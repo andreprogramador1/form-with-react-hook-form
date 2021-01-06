@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import api from '../../services/api'
 import { LiContainer, Button } from './style'
 import { SideBar } from '../SideBar'
-import { useParams, useHistory } from 'react-router-dom'
-import { Form } from '../Form'
+import { useHistory } from 'react-router-dom'
+
 
 
 export const List = () => {
