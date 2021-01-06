@@ -12,17 +12,21 @@ export const Form = () => {
     criteriaMode: "all"
   });
 
-  const param = useParams();
-  console.log(param)
+  const { idparams } = useParams();
+
   
   useEffect(() => {
     async function getProduct() {
-      const response = await api.get('users/'+param.idparams)
+      const response = await api.get('users/'+idparams)
       console.log(response)
       setValue('name', response.data.name)
+      setValue('lastName', response.data.lastName)
+      setValue('email', response.data.email)
+      setValue('password', response.data.password)
+      setValue('phone', response.data.phone)
     }
     getProduct()
-  },[param.idparams])
+  },[idparams])
 
   function onSubmit(data) {
 
