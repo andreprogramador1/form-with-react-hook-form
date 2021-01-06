@@ -28,25 +28,34 @@ export const Form = () => {
     getProduct()
   },[idparams])
 
-  function onSubmit(data) {
+  // function onSubmit(data) {
 
-    try {
-      console.log(data)
-      const url = `/users`
-      api.post(url, data)
-      .then((response) => {
-      console.log(response)
-    })
+  //   try {
+  //     console.log(data)
+  //     const url = `/users`
+  //     api.post(url, data)
+  //     .then((response) => {
+  //     console.log(response)
+  //   })
 
-    } catch (error) {
-      console.log(error)
-    }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
    
-  }
+  // }
 
-  const handleEdit = async (id) => {
-    console.log(id)
-    const edited = await api.patch(`/users/${id}`)
+
+  function onSubmit(data) {
+    
+    const method = idparams ? 'patch' : 'post'
+    const url = idparams
+     ? `http://localhost:3333/users/${idparams}`
+     : `http://localhost:3333/users/`
+    api[method](url, data)
+    .then((response) => {
+      // console.log(response)
+    })
+   
   }
 
   // const onSubmit = data => console.log(data);
