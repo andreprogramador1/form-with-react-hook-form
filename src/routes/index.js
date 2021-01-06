@@ -13,9 +13,9 @@ export default function Routes() {
 
   return(
     <Switch>
-      <Route path="/form" component={Form}/>
-      <Route path="/form/:id" component={Form}/>
-      <Route path="/users" component={List}/>
+      <Route path="/form" exact component={Form}/>
+      <Route path="/form/:idparams" exact component={Form}/>
+      <Route path="/users" exact component={List}/>
     </Switch>
   );
 }

@@ -4,14 +4,25 @@ import { useForm, Controller  } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message';
 import api from '../../services/api'
 import { SideBar } from '../SideBar'
+import { useParams, useRouteMatch  } from 'react-router-dom'
 
 export const Form = () => {
 
-  const { register, handleSubmit, watch, errors } = useForm({
+  const { register, handleSubmit, watch, errors, setValue } = useForm({
     criteriaMode: "all"
   });
 
+  const param = useParams();
+  console.log(param)
   
+  useEffect(() => {
+    async function getProduct() {
+      const response = await api.get('users/'+param.idparams)
+      console.log(response)
+      setValue('name', response.data.name)
+    }
+    getProduct()
+  },[param.idparams])
 
   function onSubmit(data) {
 
@@ -26,8 +37,12 @@ export const Form = () => {
     } catch (error) {
       console.log(error)
     }
-    
    
+  }
+
+  const handleEdit = async (id) => {
+    console.log(id)
+    const edited = await api.patch(`/users/${id}`)
   }
 
   // const onSubmit = data => console.log(data);
@@ -39,7 +54,8 @@ export const Form = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
 
       <label>Name</label>
-      <input name="name"  
+      <input name="name"
+
         ref={register({
           required: "This is required.",
           maxLength: {
